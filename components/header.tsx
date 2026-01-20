@@ -4,6 +4,7 @@ import { Flower2, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -14,7 +15,14 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <Flower2 className="h-6 w-6 text-accent transition-transform group-hover:scale-110" />
+            {/* <Flower2 className="h-6 w-6 text-accent transition-transform group-hover:scale-110" /> */}
+            <Image
+              src="/varpe-logo.jpg"
+              alt="Varpe Flower Decorators"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
             <span className="font-serif text-xl font-bold text-foreground">Varpe Flower Decorators</span>
           </Link>
 
