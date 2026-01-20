@@ -10,10 +10,11 @@ export default function Hero() {
           <div className="flex flex-col justify-center space-y-6 lg:space-y-8">
             <div className="space-y-4">
               <h1 className="font-serif text-5xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl text-balance">
-                Varpe Flower Decorators
+                “Turning Flowers Into Feelings”
+                {/* Varpe Flower Decorators */}
               </h1>
               <p className="text-xl text-muted-foreground md:text-2xl lg:text-3xl font-light text-balance">
-                We make moments bloom
+                We make moments bloom 😊
               </p>
             </div>
             <div>
