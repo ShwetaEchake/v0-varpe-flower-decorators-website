@@ -1,4 +1,5 @@
 import { Flower2, Facebook, Instagram, Mail, Phone } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   return (
@@ -8,7 +9,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Flower2 className="h-8 w-8" />
+              {/* <Flower2 className="h-8 w-8" /> */}
+               <Image
+                src="/varpe-logo.jpg"
+                alt="Varpe Flower Decorators"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
               <span className="font-serif text-2xl font-bold">Varpe</span>
             </div>
             <p className="text-sm leading-relaxed opacity-90">
