@@ -12,7 +12,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto max-w-5xl">
             <h1 className="mb-8 font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl text-center text-balance">
-              Contact Us 📞
+              Contact Us 📍
             </h1>
             <p className="mb-12 text-center text-lg text-muted-foreground md:text-xl text-pretty">
               Get in touch with us for all your flower decoration needs. We're here to make your special moments
