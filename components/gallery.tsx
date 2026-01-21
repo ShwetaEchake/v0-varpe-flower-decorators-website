@@ -28,7 +28,7 @@ const Gallery = () => {
     all: "All",
     bouquet: "Bouquet",
     "door-arrangement": "Door Decor",
-    "flower-toran": "Toran",
+    "flower-toran": "Flower Toran",
     ganpati: "Ganpati",
     "photo-frame": "Photo Frame",
     haar: "Haar",
@@ -78,8 +78,8 @@ const Gallery = () => {
     { category: "flower-toran", image: "/gallery-toran-4.jpg", title: "Festival Toran" },
     { category: "flower-toran", image: "/gallery-toran-5.jpg", title: "Ceremony Toran" },
     { category: "flower-toran", image: "/gallery-toran-6.jpg", title: "Celebration Toran" },
-    { category: "flower-toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
-    { category: "flower-toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
+    // { category: "flower-toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
+    // { category: "flower-toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
 
     
     // Ganpati Decoration - 8 images
