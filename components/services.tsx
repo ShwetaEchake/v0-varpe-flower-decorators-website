@@ -59,7 +59,7 @@ const services = [
     image: "/baby-cradle-decorated-with-flowers.jpg",
   },
   {
-    title: "Bedroom Decoration",
+    title: "First Night Decoration",
     image: "/romantic-bedroom-flower-decoration-setup.jpg",
   },
 ]
