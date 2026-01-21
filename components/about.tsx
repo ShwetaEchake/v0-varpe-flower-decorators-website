@@ -8,7 +8,7 @@ export default function About() {
           {/* Text Content */}
           <div className="space-y-6">
             <h2 className="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl text-balance text-center md:text-left">
-              About Us 🏵️
+              About Us 🌷
             </h2>
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p className="text-pretty">
