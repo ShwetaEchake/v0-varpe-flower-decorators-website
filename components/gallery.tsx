@@ -28,7 +28,7 @@ const Gallery = () => {
     all: "All",
     bouquet: "Bouquet",
     "door-arrangement": "Door Decor",
-    "flower-toran": "Flower Toran",
+    "flower-toran": "Toran",
     ganpati: "Ganpati",
     "photo-frame": "Photo Frame",
     haar: "Haar",
