@@ -196,7 +196,7 @@ const Gallery = () => {
         {/* Heading */}
          <div className="text-center mb-12">
           <h2 className="mb-4 font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl text-balance">
-            Our Work 📸
+            Our Work 🪷
           </h2>
           <p className="text-center text-lg text-muted-foreground md:text-xl text-pretty max-w-2xl mx-auto">
             Explore our beautiful flower decorations that have made countless occasions memorable
