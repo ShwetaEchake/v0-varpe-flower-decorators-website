@@ -14,7 +14,7 @@ const Gallery = () => {
     "ganpati",
     "photo-frame",
     "haar",
-    "toran",
+    // "toran",
     "buke",
     "car-decoration",
     "cuddle-decoration",
@@ -32,7 +32,7 @@ const Gallery = () => {
     ganpati: "Ganpati",
     "photo-frame": "Photo Frame",
     haar: "Haar",
-    toran: "Toran",
+    // toran: "Toran",
     buke: "Buke",
     "car-decoration": "Car & Truck",
     "cuddle-decoration": "Cuddle",
@@ -72,7 +72,16 @@ const Gallery = () => {
     { category: "flower-toran", image: "/gallery-flower-toran-6.jpg", title: "Grand Toran" },
     { category: "flower-toran", image: "/gallery-flower-toran-7.jpg", title: "Festive Toran" },
     { category: "flower-toran", image: "/gallery-flower-toran-8.jpg", title: "Auspicious Toran" },
+    { category: "flower-toran", image: "/gallery-toran-1.jpg", title: "Entrance Toran" },
+    { category: "flower-toran", image: "/gallery-toran-2.jpg", title: "Doorway Toran" },
+    { category: "flower-toran", image: "/gallery-toran-3.jpg", title: "Wedding Toran" },
+    { category: "flower-toran", image: "/gallery-toran-4.jpg", title: "Festival Toran" },
+    { category: "flower-toran", image: "/gallery-toran-5.jpg", title: "Ceremony Toran" },
+    { category: "flower-toran", image: "/gallery-toran-6.jpg", title: "Celebration Toran" },
+    { category: "flower-toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
+    { category: "flower-toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
 
+    
     // Ganpati Decoration - 8 images
     { category: "ganpati", image: "/gallery-ganpati-1.jpg", title: "Ganpati Chaturthi" },
     { category: "ganpati", image: "/gallery-ganpati-2.jpg", title: "Ganpati Mandap" },
@@ -102,16 +111,6 @@ const Gallery = () => {
     { category: "haar", image: "/gallery-haar-6.jpg", title: "Luxury Haar" },
     { category: "haar", image: "/gallery-haar-7.jpg", title: "Wedding Haar" },
     { category: "haar", image: "/gallery-haar-8.jpg", title: "Ceremonial Haar" },
-
-    // Toran - 8 images
-    { category: "toran", image: "/gallery-toran-1.jpg", title: "Entrance Toran" },
-    { category: "toran", image: "/gallery-toran-2.jpg", title: "Doorway Toran" },
-    { category: "toran", image: "/gallery-toran-3.jpg", title: "Wedding Toran" },
-    { category: "toran", image: "/gallery-toran-4.jpg", title: "Festival Toran" },
-    { category: "toran", image: "/gallery-toran-5.jpg", title: "Ceremony Toran" },
-    { category: "toran", image: "/gallery-toran-6.jpg", title: "Celebration Toran" },
-    { category: "toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
-    { category: "toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
 
     // Buke - 8 images
     { category: "buke", image: "/gallery-buke-1.jpg", title: "Red Buke" },

@@ -14,7 +14,7 @@ export default function Hero() {
                 {/* Varpe Flower Decorators */}
               </h1>
               <p className="text-xl text-muted-foreground md:text-2xl lg:text-3xl font-light text-balance">
-                We make moments bloom 😊
+                We make moments bloom 🌺
               </p>
             </div>
             <div>
