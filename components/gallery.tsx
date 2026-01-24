@@ -1,12 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Image from "next/image"
+import dynamic from "next/dynamic"
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import "yet-another-react-lightbox/styles.css"
 
-const Gallery = () => {
-  const [activeTab, setActiveTab] = useState("all")
+const Lightbox = dynamic(
+  () => import("yet-another-react-lightbox"),
+  { ssr: false }
+)
 
-  const categories = [
+/* ------------------ DATA ------------------ */
+
+const categories = [
     "all",
     "bouquet",
     "door-arrangement",
@@ -22,27 +29,45 @@ const Gallery = () => {
     "flower-doli",
     "bedroom-decoration",
     "ring-cross",
-  ]
+]
 
-  const categoryLabels = {
+const labels = {
     all: "All",
     bouquet: "Bouquet",
     "door-arrangement": "Door Decor",
     "flower-toran": "Flower Toran",
-    ganpati: "Ganpati",
+    ganpati: "Ganpati Decoration",
     "photo-frame": "Photo Frame",
     haar: "Haar",
     // toran: "Toran",
     buke: "Buke",
-    "car-decoration": "Car & Truck",
-    "cuddle-decoration": "Cuddle",
-    "stage-decoration": "Stage",
+    "car-decoration": "Car & Truck Decoration",
+    "cuddle-decoration": "Cuddle Decoration",
+    "stage-decoration": "Stage Decoration",
     "flower-doli": "Flower Doli",
-    "bedroom-decoration": "Bedroom",
+    "bedroom-decoration": "Bedroom Decoration",
     "ring-cross": "Ring & Cross",
-  }
+}
 
-  const galleryImages = [
+// const imagesData = [
+//   { src: "/gallery-bouquet-1.jpg", title: "Red Rose Bouquet", category: "bouquet" },
+//   { src: "/gallery-bouquet-2.jpg", title: "Mixed Bouquet", category: "bouquet" },
+
+//   { src: "/gallery-door-arrangement-1.jpg", title: "Wedding Door", category: "door-arrangement" },
+
+//   { src: "/gallery-flower-toran-1.jpg", title: "Flower Toran", category: "flower-toran" },
+
+//   { src: "/gallery-ganpati-1.jpg", title: "Ganpati Decor", category: "ganpati" },
+
+//   { src: "/gallery-stage-decoration-1.jpg", title: "Wedding Stage", category: "stage-decoration" },
+//   { src: "/gallery-stage-decoration-2.jpg", title: "Reception Stage", category: "stage-decoration" },
+
+//   { src: "/gallery-bedroom-decoration-1.jpg", title: "Romantic Bedroom", category: "bedroom-decoration" },
+
+//   { src: "/gallery-car-decoration-1.jpg", title: "Wedding Car", category: "car-decoration" },
+// ]
+
+  const imagesData = [
     // Bouquet - 8 images
     { category: "bouquet", image: "/gallery-bouquet-1.jpg", title: "Red Rose Bouquet" },
     { category: "bouquet", image: "/gallery-bouquet-2.jpg", title: "Mixed Flower Bouquet" },
@@ -78,10 +103,10 @@ const Gallery = () => {
     { category: "flower-toran", image: "/gallery-toran-4.jpg", title: "Festival Toran" },
     { category: "flower-toran", image: "/gallery-toran-5.jpg", title: "Ceremony Toran" },
     { category: "flower-toran", image: "/gallery-toran-6.jpg", title: "Celebration Toran" },
-    // { category: "flower-toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
-    // { category: "flower-toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
+    { category: "flower-toran", image: "/gallery-toran-7.jpg", title: "Grand Toran" },
+    { category: "flower-toran", image: "/gallery-toran-8.jpg", title: "Artistic Toran" },
 
-    
+
     // Ganpati Decoration - 8 images
     { category: "ganpati", image: "/gallery-ganpati-1.jpg", title: "Ganpati Chaturthi" },
     { category: "ganpati", image: "/gallery-ganpati-2.jpg", title: "Ganpati Mandap" },
@@ -183,71 +208,106 @@ const Gallery = () => {
     { category: "ring-cross", image: "/gallery-ring-cross-8.jpg", title: "Artistic Ring Cross" },
   ]
 
-  
-   const filteredImages =
-    activeTab === "all"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeTab)
+/* ------------------ COMPONENT ------------------ */
+
+export default function AdvancedGallery() {
+  const [activeTab, setActiveTab] = useState("all")
+  const [visible, setVisible] = useState(6)
+  const [lightboxIndex, setLightboxIndex] = useState(-1)
+
+  const filteredImages = useMemo(() => {
+    const data =
+      activeTab === "all"
+        ? imagesData
+        : imagesData.filter(img => img.category === activeTab)
+
+    return data
+  }, [activeTab])
+
+  const slides = filteredImages.map(img => ({ src: img.image }))
+
+  const visibleImages = filteredImages.slice(0, visible)
 
   return (
-    <div className="w-full px-4 py-12 md:py-16 lg:py-20 bg-[#FEF9F4]">
+    <section className="bg-[#FEF9F4] py-14 px-4">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
-         <div className="text-center mb-12">
-          <h2 className="mb-4 font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl text-balance">
-            Our Work 🪷 
-          </h2>
-          <p className="text-center text-lg text-muted-foreground md:text-xl text-pretty max-w-2xl mx-auto">
-            Explore our beautiful flower decorations that have made countless occasions memorable
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold mb-3">Our Work 🪷</h2>
+          <p className="text-muted-foreground">
+            Beautiful decorations crafted with love
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveTab(category)}
-               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === category
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-muted text-muted-foreground hover:bg-primary/10"
-              }`}
-            >
-              {categoryLabels[category]}
-            </button>
-          ))}
+        {/* Tabs */}
+        <div className="sticky top-16 bg-[#FEF9F4] z-10 py-3 mb-8">
+          <div className="flex gap-2 overflow-x-auto md:flex-wrap md:justify-center">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => {
+                  setActiveTab(cat)
+                  setVisible(6)
+                }}
+                className={`px-5 py-2 rounded-full text-sm shrink-0 transition ${
+                  activeTab === cat
+                    ? "bg-primary text-white shadow"
+                    : "bg-muted text-muted-foreground"
+                }`}
+              >
+                {labels[cat]}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((image, index) => (
-            <div
-              key={`${image.category}-${index}`}
-              className="group relative overflow-hidden rounded-lg shadow-lg h-80"
-            >
-              <Image
-                src={image.image}
-                alt={image.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
+        {/* Masonry Grid */}
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 3, 1024: 4 }}>
+          <Masonry gutter="16px">
+            {visibleImages.map((img, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden rounded-xl shadow cursor-pointer group"
+                onClick={() => setLightboxIndex(index)}
+              >
+                <Image
+                  src={img.image}
+                  alt={img.title}
+                  width={500}
+                  height={700}
+                  className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                />
 
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                <p className="text-white font-semibold text-lg">
-                  {image.title}
-                </p>
+                <div className="absolute inset-x-0 bottom-0 bg-black/60 p-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
+                  <p className="text-white text-sm text-center">{img.title}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+
+        {/* Load More */}
+        {visible < filteredImages.length && (
+          <div className="text-center mt-10">
+            <button
+              onClick={() => setVisible(v => v + 6)}
+              className="px-6 py-3 rounded-full bg-primary text-white hover:opacity-90"
+            >
+              Load More
+            </button>
+          </div>
+        )}
+
+        {/* Lightbox */}
+        <Lightbox
+          open={lightboxIndex >= 0}
+          close={() => setLightboxIndex(-1)}
+          index={lightboxIndex}
+          slides={slides}
+        />
 
       </div>
-    </div>
+    </section>
   )
-
 }
-
-export default Gallery
