@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
 import Image from "next/image"
 import dynamic from "next/dynamic"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
@@ -214,6 +214,7 @@ export default function AdvancedGallery() {
   const [activeTab, setActiveTab] = useState("all")
   const [visible, setVisible] = useState(6)
   const [lightboxIndex, setLightboxIndex] = useState(-1)
+  const loadMoreRef = useRef(null)
 
   const filteredImages = useMemo(() => {
     const data =
@@ -227,6 +228,28 @@ export default function AdvancedGallery() {
   const slides = filteredImages.map(img => ({ src: img.image }))
 
   const visibleImages = filteredImages.slice(0, visible)
+
+  // Intersection Observer for scroll-based auto-loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && visible < filteredImages.length) {
+          setVisible(v => Math.min(v + 6, filteredImages.length))
+        }
+      },
+      { threshold: 0.1, rootMargin: "100px" }
+    )
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current)
+    }
+
+    return () => {
+      if (loadMoreRef.current) {
+        observer.unobserve(loadMoreRef.current)
+      }
+    }
+  }, [visible, filteredImages.length])
 
   return (
     <section className="bg-[#FEF9F4] py-14 px-4">
@@ -287,15 +310,15 @@ export default function AdvancedGallery() {
           </Masonry>
         </ResponsiveMasonry>
 
-        {/* Load More */}
+        {/* Load More Trigger (hidden, detects scroll) */}
         {visible < filteredImages.length && (
-          <div className="text-center mt-10">
-            <button
-              onClick={() => setVisible(v => v + 6)}
-              className="px-6 py-3 rounded-full bg-primary text-white hover:opacity-90"
-            >
-              Load More
-            </button>
+          <div ref={loadMoreRef} className="text-center mt-10 py-8">
+            <div className="inline-block px-6 py-3 rounded-full bg-primary/20 text-primary">
+              <svg className="animate-spin h-5 w-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
           </div>
         )}
 
