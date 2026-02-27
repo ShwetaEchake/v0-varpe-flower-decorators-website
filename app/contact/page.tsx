@@ -89,8 +89,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="name"
-                      className="w-full rounded-lg border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                      style={{ borderColor: 'hsl(var(--border))' }}
+                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -102,8 +101,7 @@ export default function ContactPage() {
                     <input
                       type="email"
                       id="email"
-                      className="w-full rounded-lg border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                      style={{ borderColor: 'hsl(var(--border))' }}
+                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -115,8 +113,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       id="phone"
-                      className="w-full rounded-lg border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                      style={{ borderColor: 'hsl(var(--border))' }}
+                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                       placeholder="Enter your phone"
                     />
                   </div>
@@ -128,8 +125,7 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       rows={4}
-                      className="w-full rounded-lg border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                      style={{ borderColor: 'hsl(var(--border))' }}
+                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                       placeholder="Tell us about your event and requirements"
                     ></textarea>
                   </div>

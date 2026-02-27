@@ -31,7 +31,7 @@ export default function Testimonials() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card shadow-sm hover:shadow-lg transition-shadow" style={{ borderColor: 'hsl(var(--border) / 0.5)' }}>
+            <Card key={index} className="border-border/50 bg-card shadow-sm hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <div className="mb-4 flex gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -39,7 +39,7 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="mb-6 text-muted-foreground leading-relaxed text-pretty">{testimonial.text}</p>
-                <div className="border-t pt-4" style={{ borderTopColor: 'hsl(var(--border))' }}>
+                <div className="border-t border-border pt-4">
                   <p className="font-semibold text-foreground">{testimonial.name}</p>
                   <p className="text-sm text-muted-foreground">{testimonial.label}</p>
                 </div>

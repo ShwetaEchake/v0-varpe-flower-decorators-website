@@ -78,8 +78,7 @@ export default function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group overflow-hidden bg-card shadow-sm hover:shadow-xl transition-all duration-300"
-              style={{ borderColor: 'hsl(var(--border) / 0.5)' }}
+              className="group overflow-hidden border-border/50 bg-card shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <CardContent className="p-0">
                 <div className="relative aspect-square overflow-hidden">
